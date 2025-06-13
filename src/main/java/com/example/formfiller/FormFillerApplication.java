@@ -1,3 +1,5 @@
+// Author: Javier Garcia Santana
+
 package com.example.formfiller;
 
 import javafx.application.Application;
@@ -28,13 +30,13 @@ public class FormFillerApplication extends Application {
     @Override
     public void start(Stage stage) {
         stage.setTitle("Form Filler");
-        setupMenu(stage);
+        setupMenu();
         root.getChildren().add(createUserSelectionPage());
         stage.setScene(new Scene(root, 500, 600));
         stage.show();
     }
 
-    private void setupMenu(Stage stage) {
+    private void setupMenu() {
         MenuItem preferencesItem = new MenuItem("Preferences");
         preferencesItem.setOnAction(e -> {
             PreferencesWindow prefs = new PreferencesWindow(userDataStore);
