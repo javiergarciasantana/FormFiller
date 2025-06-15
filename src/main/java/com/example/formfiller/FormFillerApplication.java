@@ -22,7 +22,12 @@ public class FormFillerApplication extends Application {
     private final VBox root = new VBox();
     private final Label messageLabel = new Label();
 
-
+    /**
+     * The main entry point of the application.
+     * Launches the JavaFX application with the given command-line arguments.
+     *
+     * @param args the command-line arguments passed to the program
+     */
     public static void main(String[] args) {
         launch(args);
     }
