@@ -32,6 +32,12 @@ public class FormFillerApplication extends Application {
         launch(args);
     }
 
+    /**
+     * The main entry point of the application.
+     * Launches the JavaFX application with the given command-line arguments.
+     *
+     * @param stage the command-line arguments passed to the program
+     */
     @Override
     public void start(Stage stage) {
         stage.setTitle("Form Filler");
