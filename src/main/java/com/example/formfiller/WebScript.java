@@ -9,7 +9,20 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
 
+/**
+ * WebScript is a class that automates the process of filling out a web form using Selenium WebDriver.
+ * It navigates to a specific URL, fills in the login credentials, and submits the form.
+ * After logging in, it fills out various fields on subsequent pages based on provided user data.
+ */
 public class WebScript {
+    /**
+     * Starts the web automation process by initializing the Safari WebDriver,
+     * navigating to the login page, filling in the credentials, and proceeding through the form.
+     *
+     * @param selectedUsername The username to log in with.
+     * @param selectedPassword The password to log in with.
+     * @param userData         A map containing user data to fill out the form.
+     */
     public static void Start(String selectedUsername, String selectedPassword, Map<String, String> userData) {
         try {
             WebDriver driver = new SafariDriver();

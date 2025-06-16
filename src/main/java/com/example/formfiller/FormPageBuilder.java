@@ -22,16 +22,29 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-
+/**
+ * FormPageBuilder is responsible for constructing the form page layout,
+ * including drag-and-drop functionality for image uploads and field population.
+ * It uses FormFields to manage the individual form fields and their properties.
+ */
 class FormPageBuilder {
     private final FormFields fields;
     private final ScrollPane scrollPane = new ScrollPane();
 
-
+    /**
+     * Constructor initializes the FormPageBuilder with the provided FormFields.
+     *
+     * @param fields The FormFields instance containing all the form fields to be displayed.
+     */
     FormPageBuilder(FormFields fields) {
         this.fields = fields;
     }
 
+    /**
+     * Builds the form page layout with all the necessary fields and drag-and-drop functionality.
+     *
+     * @return A ScrollPane containing the constructed form layout so that the vbox is inside a scrollable area.
+     */
     ScrollPane build() {
         VBox box = new VBox(10);
         box.setPadding(new Insets(20));
@@ -40,7 +53,7 @@ class FormPageBuilder {
         buttonRow.getChildren().addAll(fields.srButton, fields.sraButton);
         buttonRow.setAlignment(Pos.CENTER);
 
-        this.fields.addDescription();
+        this.fields.addDescriptions();
         this.fields.format();
         box.getChildren().addAll(
                 createDragAndDropArea(),
@@ -76,6 +89,12 @@ class FormPageBuilder {
         return scrollPane;
     }
 
+    /**
+     * Creates a drag-and-drop area for image uploads, allowing users to paste or drop images
+     * and automatically populates the form fields with extracted data using OCR.
+     *
+     * @return A StackPane containing the drag-and-drop area with an image view.
+     */
     private Node createDragAndDropArea() {
         ImageView imageView = new ImageView();
         imageView.setFitWidth(200);
@@ -143,6 +162,12 @@ class FormPageBuilder {
         return imagePane;
     }
 
+    /**
+     * Saves the provided image from the clipboard to a temporary file in PNG format. Helper function.
+     *
+     * @param image The Image object to be saved.
+     * @return A File object pointing to the temporary file containing the image, or null if an error occurs.
+     */
     private File saveClipboardImageToTempFile(Image image) {
         try {
             BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);

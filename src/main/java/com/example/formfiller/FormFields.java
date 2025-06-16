@@ -8,6 +8,11 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * FormFields class extends FormUtils to provide a structured way to manage form fields
+ * for a user interface, including text fields, date pickers, toggle buttons, and combo boxes.
+ * It also includes methods for formatting, validating, and retrieving form data.
+ */
 class FormFields extends FormUtils {
     TextField name = new TextField();
     TextField surname = new TextField();
@@ -34,8 +39,10 @@ class FormFields extends FormUtils {
     ToggleGroup treatmentToggle = new ToggleGroup();
     ToggleGroup subscriptionToggle = new ToggleGroup();
 
-
-    public void addDescription() {
+    /**
+     * Method to add descriptions (placeholders) to the form fields.
+     */
+    public void addDescriptions() {
         this.name.setPromptText("Name");
         this.surname.setPromptText("Surname");
         this.nifNie.setPromptText("Nif/Nie");
@@ -53,6 +60,9 @@ class FormFields extends FormUtils {
         this.imei.setPromptText("IMEI");
     }
 
+    /**
+     * Method to format the form fields, set up toggle buttons, and format date pickers.
+     */
     public void format() {
         treatment = createFullToggle(srButton, treatmentToggle, sraButton, "Sr.", "Sra.");
 
@@ -94,6 +104,12 @@ class FormFields extends FormUtils {
 
     }
 
+    /**
+     * Retrieves the form data as a Map<String, String>.
+     * The keys are the field names and the values are the user inputs.
+     *
+     * @return a Map containing the form data
+     */
     public Map<String, String> getFormData() {
         Map<String, String> data = new HashMap<>();
 
@@ -121,6 +137,12 @@ class FormFields extends FormUtils {
         return data;
     }
 
+    /**
+     * Validates the form fields to ensure all required fields are filled and formatted correctly.
+     * It also prints the selections made by the user.
+     *
+     * @return true if the form is valid, false otherwise
+     */
     public boolean validateForm() {
         String selections = "Model: " + model.getValue() + " " + capacity.getValue() + "Gb, " +
                 "IMEI: " + imei.getText() + ", " +

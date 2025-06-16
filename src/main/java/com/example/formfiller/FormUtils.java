@@ -1,4 +1,5 @@
 package com.example.formfiller;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.ComboBox;
@@ -10,7 +11,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
+/**
+ * FormUtils provides utility methods for handling form-related operations,
+ * such as updating capacity options based on selected iPhone model,
+ * converting date formats, creating toggle buttons with string properties,
+ * and validating various input formats like IBAN, IMEI, and email.
+ */
 public class FormUtils {
+
+    /**
+     * Updates the capacity options in the given ComboBox based on the selected iPhone model.
+     *
+     * @param iphoneModelComboBox the ComboBox containing iPhone models
+     * @param capacityComboBox    the ComboBox to update with capacity options
+     */
     protected void updateCapacityOptions(ComboBox<String> iphoneModelComboBox, ComboBox<String> capacityComboBox) {
         capacityComboBox.getItems().clear(); // Clear existing items
         String selectedModel = iphoneModelComboBox.getValue();
@@ -32,6 +46,11 @@ public class FormUtils {
         }
     }
 
+    /**
+     * Sets a custom date format for the DatePicker(non american format).
+     *
+     * @param date the DatePicker to set the converter for
+     */
     protected void dateConverter(DatePicker date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         date.setConverter(new javafx.util.StringConverter<LocalDate>() {
@@ -53,6 +72,18 @@ public class FormUtils {
             }
         });
     }
+
+    /**
+     * Creates a toggle button group with two buttons and a StringProperty to track the selected toggle.
+     * It returns a StringProperty because it is more flexible for binding to UI components.
+     *
+     * @param firstButton  the first ToggleButton
+     * @param toggleGroup  the ToggleGroup to which both buttons will be added
+     * @param secondButton the second ToggleButton
+     * @param firstText    the text for the first button
+     * @param secondText   the text for the second button
+     * @return a StringProperty that reflects the selected toggle's text
+     */
     protected StringProperty createFullToggle(ToggleButton firstButton, ToggleGroup toggleGroup, ToggleButton secondButton, String firstText, String secondText) {
         StringProperty selection = new SimpleStringProperty();
 
@@ -70,15 +101,31 @@ public class FormUtils {
         });
         return selection;
     }
-    // Method to validate Spanish IBAN format
+
+    /**
+     * Validates the given IBAN string with a regex.
+     * @param iban the IBAN string to validate
+     * @return true if the IBAN is valid, false otherwise
+     */
      protected boolean isValidIban(String iban) {
         // Example IBAN validation logic (for illustrative purposes) (regular expresion done by jgsantana)
         return iban.matches("ES[0-9]{2}[0-9]{20}");
     }
 
+    /**
+     * Validates the given IMEI string with a regex.
+     * @param imei the IMEI string to validate
+     * @return true if the IMEI is valid, false otherwise
+     */
     protected boolean isValidImei(String imei) {
         return imei.matches("[0-9]{15}");
     }
+
+    /**
+     * Validates the given email string with a regex.
+     * @param email the email string to validate
+     * @return true if the email is valid, false otherwise
+     */
     protected boolean isValidEmail(String email) {
         return Pattern.compile("^(.+)@(\\S+)$")
                 .matcher(email)

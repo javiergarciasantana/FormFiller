@@ -29,11 +29,11 @@ public class PreferencesWindow {
 
         TableView<UserManager.User> userTable = new TableView<>();
         TableColumn<UserManager.User, String> aliasColumn = new TableColumn<>("Alias");
-        aliasColumn.setCellValueFactory(cellData -> javafx.beans.binding.Bindings.createStringBinding(() -> cellData.getValue().getAlias()));
+        aliasColumn.setCellValueFactory(cellData -> javafx.beans.binding.Bindings.createStringBinding(() -> cellData.getValue().alias()));
         TableColumn<UserManager.User, String> usernameColumn = new TableColumn<>("Username");
-        usernameColumn.setCellValueFactory(cellData -> javafx.beans.binding.Bindings.createStringBinding(() -> cellData.getValue().getUsername()));
+        usernameColumn.setCellValueFactory(cellData -> javafx.beans.binding.Bindings.createStringBinding(() -> cellData.getValue().username()));
         TableColumn<UserManager.User, String> passwordColumn = new TableColumn<>("Password");
-        passwordColumn.setCellValueFactory(cellData -> javafx.beans.binding.Bindings.createStringBinding(() -> cellData.getValue().getPassword()));
+        passwordColumn.setCellValueFactory(cellData -> javafx.beans.binding.Bindings.createStringBinding(() -> cellData.getValue().password()));
         userTable.getColumns().addAll(aliasColumn, usernameColumn, passwordColumn);
         userTable.setItems(userDataStore.getUserCredentials());
 

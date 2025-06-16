@@ -13,8 +13,17 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * ParsingUtils provides utility methods for parsing and extracting data from images using OCR,
+ * and filling form fields with the extracted data.
+ */
 public class ParsingUtils {
 
+    /**
+     * Retrieves the application directory path, which is useful for locating resources like Tesseract data files.
+     *
+     * @return the absolute path to the application directory, or null if an error occurs
+     */
     public static String getAppDir() {
         try {
             // Points to either the JAR or the classes/ folder
@@ -41,7 +50,13 @@ public class ParsingUtils {
         }
     }
 
-    // Method to perform OCR on an image file
+    /**
+     * Performs Optical Character Recognition (OCR) on the provided image file using Tesseract,
+     * and fills the specified form fields with the extracted data.
+     *
+     * @param file     the image file to perform OCR on
+     * @param fieldMap a map of field names to TextField objects where extracted data will be set
+     */
     public static void performOCR(File file, Map<String, TextField> fieldMap) {
         // Ensure the correct path to the Tesseract library is set
         String appDir = getAppDir();
@@ -65,8 +80,12 @@ public class ParsingUtils {
         }
     }
 
-
-    // Method to parse the extracted text and fill the form fields
+    /**
+     * Parses the extracted text from OCR and fills the corresponding fields in the provided map.
+     *
+     * @param text   the extracted text from the OCR process
+     * @param fields a map of field names to TextField objects where extracted data will be set
+     */
     private static void parseExtractedData(String text, Map<String, TextField> fields) {
         Map<String, String> patterns = Map.of(
                 "name", "(?i)(nombre|nomve)\\s*[:\\-]?\\s*(\\w+)",
@@ -94,7 +113,13 @@ public class ParsingUtils {
         //System.out.println(name + " " + surname + " " + nifNie + " " + email + " " + phone + " " + postalCode + " " + address);
     }
 
-    // Helper method to match a pattern and return the first group
+    /**
+     * Matches a given pattern against the provided text and returns the matched group.
+     *
+     * @param text    the text to search within
+     * @param pattern the regex pattern to match
+     * @return the matched group if found, or null if no match is found
+     */
     private static String matchPattern(String text, String pattern) {
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher = regex.matcher(text);
