@@ -1,5 +1,5 @@
 # Usamos una imagen base con Java 17 (ideal para versiones modernas de JavaFX)
-FROM eclipse-temurin:17-jdk-jammy
+FROM eclipse-temurin:21-jdk-jammy
 
 # Evitamos que Debian nos haga preguntas durante la instalación
 ENV DEBIAN_FRONTEND=noninteractive
@@ -9,9 +9,13 @@ RUN apt-get update && apt-get install -y \
     maven \
     xvfb \
     x11vnc \
-    fluxbox \
+    matchbox-window-manager \
     novnc \
     websockify \
+    libgtk-3-0 \
+    libgl1-mesa-glx \
+    libegl1 \
+    libasound2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Creamos la carpeta de trabajo
