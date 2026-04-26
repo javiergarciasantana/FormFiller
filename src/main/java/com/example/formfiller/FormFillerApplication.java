@@ -48,7 +48,7 @@ public class FormFillerApplication extends Application {
         stage.setTitle("Form Filler");
         setupMenu();
         root.getChildren().add(createUserSelectionPage());
-        stage.setScene(new Scene(root, 500, 600));
+        stage.setScene(new Scene(root, 512, 600));
         stage.show();
     }
 
