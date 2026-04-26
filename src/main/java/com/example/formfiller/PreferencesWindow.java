@@ -64,11 +64,19 @@ public class PreferencesWindow {
                 userDataStore.removeUser(selectedUser);
             }
         });
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> stage.close()); // This closes the current window
+
+        // Insert the button inside an HBox to align it right
+        HBox bottomLayout = new HBox(backButton);
+        bottomLayout.setAlignment(Pos.CENTER_RIGHT);
+        bottomLayout.setPadding(new Insets(10, 0, 0, 0)); // A bit of top padding
 
         HBox inputLayout = new HBox(10, aliasField, usernameField, passwordField, addButton, removeButton);
         inputLayout.setAlignment(Pos.CENTER);
 
-        preferencesLayout.getChildren().addAll(new Label("Manage Users"), userTable, inputLayout);
+        //  We add the bottomLayout to the main container
+        preferencesLayout.getChildren().addAll(new Label("Manage Users"), userTable, inputLayout, bottomLayout);
 
         Scene scene = new Scene(preferencesLayout, 600, 400);
         stage.setScene(scene);
