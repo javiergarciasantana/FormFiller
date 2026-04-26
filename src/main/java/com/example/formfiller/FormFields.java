@@ -22,7 +22,7 @@ class FormFields extends FormUtils {
     TextField city = new TextField();
     TextField address = new TextField();
     TextField phoneNumber = new TextField();
-    TextField iban = new TextField();
+    TextField iban = new TextField("ES6914656528511442166736");
     DatePicker birthDate = new DatePicker();
     DatePicker purchaseDate = new DatePicker();
     ToggleButton srButton = new ToggleButton("Sr.");
@@ -32,7 +32,7 @@ class FormFields extends FormUtils {
     ComboBox<String> model = new ComboBox<>();
     ComboBox<String> capacity = new ComboBox<>();
     TextField price = new TextField();
-    TextField imei = new TextField();
+    TextField imei = new TextField("359954311951425");
     StringProperty subscriptionType;
     StringProperty treatment;
 
