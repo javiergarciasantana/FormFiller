@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     matchbox-window-manager \
     novnc \
     websockify \
+    python3-numpy \
     libgtk-3-0 \
     libgl1-mesa-glx \
     libegl1 \
