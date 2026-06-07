@@ -8,11 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     maven \
     xvfb \
-    x11vnc \
-    matchbox-window-manager \
-    novnc \
-    websockify \
-    python3-numpy \
+    xpra \
+    ffmpeg \
     libgtk-3-0 \
     libgl1-mesa-glx \
     libegl1 \
